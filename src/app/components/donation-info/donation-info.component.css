@@ -1,0 +1,44 @@
+/*
+donations-bg: Muestra los mensajes de incentivos de donaciones y medios
+*/
+.donations-bg {
+  position: absolute;
+  z-index: 6;
+}
+
+.donations-bg img {
+  width: 100%;
+  height: 100%;
+}
+
+/*
+fader-donationInfo: Para sobreponer el texto en el div de bgDonacionesComponent
+*/
+.fader-donationInfo {
+  /* background-color: blue; */
+  /* propiedades originales */
+  /* width: 550px;
+  margin-left: 582px; */
+  width: 365px;
+  left:682px;
+  text-align: center;
+  position: absolute;
+  margin-top: 92px;
+  height: 38px;
+  font-weight: bold;
+  font-size: 16pt;
+  color: white;
+  overflow: hidden;
+  letter-spacing: 1px;
+}
+
+/*
+   Usado para un fade in y fade out de componentes
+*/
+.fade-in {
+  transition: opacity 1s ease;
+}
+.fade-out {
+  opacity: 0;
+  transition: opacity 1s ease;
+}

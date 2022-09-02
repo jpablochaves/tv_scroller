@@ -1,0 +1,110 @@
+.App {
+  /*    1080 menos el tamaño de la imagen de fondo*/
+  min-height: 850px;
+  position: relative;
+}
+
+.App-messages {
+  bottom: 0;
+  /* height: 340px; */
+  left: 0;
+  position: absolute;
+  right: 0;
+}
+
+/*
+messages-bg: Muestra el fondo de la imagen de los marquees de
+Texto generales de saludo y advertising
+*/
+/*
+.messages-bg {
+  position: absolute;
+  z-index: -1;
+}
+
+.messages-bg img {
+  width: 100%;
+  height: 100%;
+} */
+
+/*
+donations-bg: Muestra los mensajes de incentivos de donaciones y medios
+*/
+/* .donations-bg {
+  position: fixed;
+  z-index: 100;
+}
+
+.donations-bg img {
+  width: 100%;
+  height: 100%;
+} */
+
+/*
+sponsors-bg: Muestra a los patrocinadores, en caso de ser necesario otro background
+*/
+/* .sponsors-bg {
+  position: absolute;
+  z-index: 5;
+
+}
+
+.sponsors-bg img {
+  width: 100%;
+  height: 100%;
+} */
+
+/*
+logos-bg: Muestra las imagenes de los logos de los sponsors
+*/
+/* .logos-bg {
+  position: absolute;
+  z-index: 9;
+} */
+
+/*
+marquee-mensajes: Para sobreponer el texto en el div de bgMensajesComponent
+*/
+/* .marquee-mensajes {
+  position: absolute;
+  width: 100% !important;
+  max-width: 935px;
+  margin-top: 100px;
+  margin-left: 450px;
+  white-space: nowrap;
+  height: 34px;
+  font-size: 22pt;
+  font-weight: normal;
+  letter-spacing: 0px;
+  color: white;
+} */
+
+
+/*
+fader-donationInfo: Para sobreponer el texto en el div de bgDonacionesComponent
+*/
+/* .fader-donationInfo {
+  width: 550px;
+  text-align: center;
+  margin-left: 582px;
+  position: absolute;
+  margin-top: 92px;
+  height: 38px;
+  font-weight: bold;
+  font-size: 16pt;
+  color: white;
+  overflow: hidden;
+  letter-spacing: 1px;
+} */
+
+/*
+   Usado para un fade in y fade out de componentes
+*/
+/* .fade-in {
+  transition: opacity 1s ease;
+}
+
+.fade-out {
+  opacity: 0;
+  transition: opacity 1s ease;
+} */

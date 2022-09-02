@@ -1,0 +1,13 @@
+/*
+messages-bg: Muestra el fondo de la imagen de los marquees de
+Texto generales de saludo y advertising
+*/
+.messages-bg {
+  position: absolute;
+  z-index: 1;
+}
+
+.messages-bg img {
+  width: 100%;
+  height: 100%;
+}

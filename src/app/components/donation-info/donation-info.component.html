@@ -1,1 +1,10 @@
-<p>donation-info works!</p>
+<div class="donations-bg">
+  <div class="fader-donationInfo">
+    <span id="fade-words"
+      [@fadeAnimation]="animationStarter"
+      (@fadeAnimation.done)="getNextDonationInfo($event)"
+      [innerHTML]="donations[wordCounter]"></span>
+      <!-- el innerHTML se usa para que pueda traducir el html tag en el interpolation -->
+  </div>
+  <img src="../../../assets/background/donar.png" alt="" />
+</div>

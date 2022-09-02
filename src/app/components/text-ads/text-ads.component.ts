@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { RestApiService } from '../../services/rest-api.service'
+
 
 @Component({
   selector: 'app-text-ads',
@@ -7,9 +9,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TextAdsComponent implements OnInit {
 
-  constructor() { }
+  Messages:any = {};
 
+  constructor(public restApi: RestApiService) { }
   ngOnInit(): void {
+    console.log("Init ** text-ads");
+    this.loadData();
+  }
+
+  loadData() {
+    return this.restApi.getMessages().subscribe((data: {}) => {
+      this.Messages = data;
+      console.log(this.Messages);
+    });
   }
 
 }

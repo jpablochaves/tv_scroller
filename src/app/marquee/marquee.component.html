@@ -1,0 +1,8 @@
+<div class="marquee-mensajes">
+  <div *ngIf="messages.length <= 0" class="marquee">
+    <span>{{ marquee_default }}</span>
+  </div>
+  <div *ngIf="messages.length > 0" class="marquee">
+    <span>{{ messages.join("🔸") }}</span>
+  </div>
+</div>
