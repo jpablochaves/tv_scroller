@@ -37,7 +37,8 @@ export class AdImagesComponent implements AfterViewInit {
         });
       }
     });
-    this.checkChangesOnImages()
+    this.refreshedImages = [...this.imagesFromService]
+    // this.checkChangesOnImages()
   }
 
   checkChangesOnImages(): void {
