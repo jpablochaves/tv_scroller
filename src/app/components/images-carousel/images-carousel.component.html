@@ -1,0 +1,26 @@
+<ngb-carousel *ngIf="slideImages"
+  [showNavigationArrows]="false"
+  [showNavigationIndicators]="false"
+  [interval]="1000"
+  [keyboard]="false"
+  [pauseOnHover]="false"
+  (slide)="onSlide($event)">
+  <ng-template ngbSlide *ngFor="let slide of slideImages">
+    <div class="picsum-img-wrapper">
+      <!-- en caso de ser cuadrada se le setea un class -->
+      <img *ngIf="slide.shape == 0"
+            [src]="slide.path"
+            [alt]="slide.name"
+            class="squared_image"
+            (error)="imgNotFound($event)"
+            onError="this.src='assets/logos/sponsors/00_TELETON.png'"/>
+    <!-- Si no se encuentra la imagen se sustituye por una default -->
+      <img [src]="slide.path"
+           [alt]="slide.name"
+           (error)="imgNotFound($event)"
+           onError="this.src='assets/logos/sponsors/00_TELETON.png'"/>
+    </div>
+  </ng-template>
+</ngb-carousel>
+
+

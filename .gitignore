@@ -44,3 +44,6 @@ Thumbs.db
 
 # Configuration files
 .settings.ini
+
+# sponsors images
+/src/assets/logos

@@ -10,17 +10,19 @@ import { RestApiService } from '../../services/rest-api.service'
 export class TextAdsComponent implements OnInit {
 
   Messages:any = {};
+  msg:string[] = [];
 
   constructor(public restApi: RestApiService) { }
   ngOnInit(): void {
-    console.log("Init ** text-ads");
-    this.loadData();
+    // console.log("Init ** text-ads");
+   // this.loadData();
   }
 
   loadData() {
-    return this.restApi.getMessages().subscribe((data: {}) => {
+    return this.restApi.getAdvertisings().subscribe((data) => {
+      data.forEach(d => this.msg.push(d.ad));
       this.Messages = data;
-      console.log(this.Messages);
+      // console.log(this.msg);
     });
   }
 

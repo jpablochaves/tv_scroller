@@ -1,0 +1,72 @@
+.marquee-advertising {
+  width: 100% !important;
+  margin-left: 440px;
+  position: absolute;
+  color: white;
+  white-space: nowrap;
+  overflow: hidden;
+  overflow-x: -webkit-marquee;
+  -webkit-marquee-direction: forwards;
+  -webkit-marquee-style: scroll;
+  -webkit-marquee-speed: normal;
+  -webkit-marquee-increment: small;
+  -webkit-marquee-repetition: 5;
+  overflow-x: marquee-line;
+  position: relative;
+}
+
+.marquee-advertising span{
+  /* background-color:gray; */
+  display: inline-block;
+  white-space: nowrap;
+  padding-left: 100%;
+  font-size: 24px;
+  will-change: transform;
+  width: 100%;
+  /* starting position */
+  -moz-transform: translateX(100%);
+  -webkit-transform: translateX(100%);
+  transform: translateX(100%);
+  /* Apply animation to this element */
+  -moz-animation: marquee 30s linear infinite;
+  -webkit-animation: marquee 30s linear infinite;
+  animation: marquee 30s linear infinite;
+}
+
+@-moz-keyframes marquee {
+  0% {
+    -moz-transform: translateX(0%);
+  }
+
+  100% {
+    -moz-transform: translateX(-100%);
+  }
+}
+
+@-webkit-keyframes marquee {
+  0% {
+    -webkit-transform: translateX(0%);
+  }
+
+  100% {
+    -webkit-transform: translateX(-100%);
+  }
+}
+
+@keyframes marquee {
+  0% {
+    -moz-transform: translateX(0%);
+    /* Firefox bug fix */
+    -webkit-transform: translateX(0%);
+    /* Firefox bug fix */
+    transform: translateX(0%);
+  }
+
+  100% {
+    -moz-transform: translateX(-100%);
+    /* Firefox bug fix */
+    -webkit-transform: translateX(-100%);
+    /* Firefox bug fix */
+    transform: translateX(-100%);
+  }
+}

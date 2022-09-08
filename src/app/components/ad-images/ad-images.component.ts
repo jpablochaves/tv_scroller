@@ -1,34 +1,54 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component } from '@angular/core';
+import { RestApiService } from 'src/app/services/rest-api.service';
+import { Image } from '../../interfaces/tvscroller.interfaces';
 
 
-interface Image {
-  id: string;
-  src?: string;
-  alt?: string;
-  title?: string;
-}
 @Component({
   selector: 'app-images',
   templateUrl: './ad-images.component.html',
   styleUrls: ['./ad-images.component.css']
 })
-export class AdImagesComponent implements OnInit {
+export class AdImagesComponent implements AfterViewInit {
 
-  imagesData: Image[] = [
-    { id: 'Slide1', src: 'assets/logos/sponsors/00_CLUB_ACTIVO.png', alt: '', title: 'one'},
-    { id: 'Slide2', src: 'assets/logos/sponsors/00_TELETON.png', alt: '', title: 'two'},
-    { id: 'Slide3', src: 'assets/logos/sponsors/01_BCR.png', alt: '', title: 'three'},
-    { id: 'Slide4', src: 'assets/logos/sponsors/02_KOLBI.png', alt: '', title: 'four'},
-    { id: 'Slide5', src: 'assets/logos/sponsors/03_IECSA.png', alt: '', title: 'five'},
-  ];
-
-  constructor() {
-    console.log("image constructor***");
+  imagesFromService: Image[] = [];
+  refreshedImages: Image[] = []; // Se pasa al componente app-images-carousel como param
+  constructor(private apiService: RestApiService) {
+    this.apiService.getImages().subscribe(response => {
+      this.refreshedImages = [...response]
+    });
   }
 
-  
-  ngOnInit() {
-    console.log(this.imagesData)
+
+  ngAfterViewInit(): void {
+    console.log("AfterViewInit");
+    setInterval(() => {
+      this.loadImagesToCarousel()
+    }, 20000);
+  }
+
+  loadImagesToCarousel(): void {
+    this.apiService.getImages().subscribe(response => {
+      // console.log('resp', response);
+      if (response === null) {
+        this.fillDefaultDataWhenNull()
+      } else {
+        response.forEach((data) => {
+          this.imagesFromService.push(data);
+        });
+      }
+    });
+    this.checkChangesOnImages()
+  }
+
+  checkChangesOnImages(): void {
+    const copyArr = [...[...this.refreshedImages, ...this.imagesFromService]]
+    this.refreshedImages = copyArr.filter((v, i, a) => a.findIndex(v2 => (v2.name === v.name)) === i)
+    this.imagesFromService = [];
+  }
+
+  fillDefaultDataWhenNull(): void {
+    this.imagesFromService.push({ path: 'assets/logos/sponsors/00_CLUB_ACTIVO.png', name: "00_CLUB_ACTIVO.png", shape: 0 })
+    this.imagesFromService.push({ path: 'assets/logos/sponsors/00_TELETON.png', name: "00_TELETON.png", shape: 1 })
   }
 
 }

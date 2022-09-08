@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Message, Donation } from '../interfaces/tvscroller.interfaces'
+import { Message, Donation, Ad, Image } from '../interfaces/tvscroller.interfaces'
 import { Observable, throwError } from 'rxjs';
 import { retry, catchError } from 'rxjs/operators';
 
@@ -34,6 +34,20 @@ export class RestApiService {
     const url = `${this.API_URL}/donations`;
     return this.httpService.get<Donation[]>(url)
       .pipe(retry(1), catchError(this.handleError));
+  }
+
+   // Obtener la información de publicidad y medios
+   getAdvertisings(): Observable<Ad[]> {
+    const url = `${this.API_URL}/ads`;
+    return this.httpService.get<Ad[]>(url)
+      .pipe(retry(1), catchError(this.handleError));
+  }
+
+  // Obtener la información imagenes
+  getImages(): Observable<Image[]> {
+    const url = `${this.API_URL}/images`;
+    return this.httpService.get<Image[]>(url)
+          .pipe(retry(3), catchError(this.handleError));
   }
 
 

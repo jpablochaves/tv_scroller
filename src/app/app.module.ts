@@ -4,6 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppComponent } from './app.component';
 import { AdImagesComponent } from './components/ad-images/ad-images.component';
 import { MessagesComponent } from './components/messages/messages.component';
@@ -11,7 +12,8 @@ import { DonationInfoComponent } from './components/donation-info/donation-info.
 import { TextAdsComponent } from './components/text-ads/text-ads.component';
 import { HttpClientModule } from '@angular/common/http';
 import { MarqueeComponent } from './marquee/marquee.component';
-import { CarouselModule } from 'ngx-owl-carousel-o';
+import { MarqueeAdvertisingComponent } from './marquee-advertising/marquee-advertising.component';
+import { ImagesCarouselComponent } from './components/images-carousel/images-carousel.component';
 
 
 
@@ -23,13 +25,15 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
     DonationInfoComponent,
     TextAdsComponent,
     MarqueeComponent,
+    MarqueeAdvertisingComponent,
+    ImagesCarouselComponent,
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
     HttpClientModule,
-    CarouselModule,
+    NgbModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
