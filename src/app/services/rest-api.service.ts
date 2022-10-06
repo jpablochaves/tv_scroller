@@ -10,7 +10,7 @@ import { retry, catchError } from 'rxjs/operators';
 export class RestApiService {
   // Define the API
   IP = 'localhost'
-  PORT = 3000
+  PORT = 5000
   API_URL = `http://${this.IP}:${this.PORT}/teleton/tvscroller`;
   // Dependency Injection
   constructor(private httpService: HttpClient) { }

@@ -28,8 +28,7 @@ export class ImagesCarouselComponent implements OnInit {
     // this.slideImages = [...this.images];
     const cpArray = [...[...this.slideImages, ...this.images]]
     this.slideImages = cpArray.filter((v, i, a) => a.findIndex(v2 => (v2.name === v.name)) === i)
-    console.log("Comp Changed", this.slideImages)
-    // Se debe recibir un arreglo nuevo y sumar a los existentes los nuevos datos
+    //  console.log("Comp Changed", this.slideImages)
   }
 
   onSlide(evt: NgbSlideEvent) {

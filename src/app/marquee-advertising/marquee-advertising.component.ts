@@ -20,10 +20,7 @@ export class MarqueeAdvertisingComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    // Cada 5 minutos va a estar revisando si hay cambios en los textos de donaciones
-    // this.interval = setInterval(() => {
-    //   this.loadAdvertisingInfo();
-    // }, 300000)
+      this.loadAdvertisingInfo();
   }
 
   ngOnDestroy() {

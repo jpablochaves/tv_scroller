@@ -1,58 +1,66 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Message } from '../interfaces/tvscroller.interfaces'
-import { interval, Observable } from 'rxjs';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { take } from 'rxjs/operators';
+import { RestApiService } from '../services/rest-api.service';
+
 
 @Component({
   selector: 'marquee-component',
   templateUrl: './marquee.component.html',
   styleUrls: ['./marquee.component.css']
 })
-export class MarqueeComponent implements OnInit, OnDestroy {
+export class MarqueeComponent implements OnInit, AfterViewInit {
 
-  messages: string[] = ['Hola', 'Vamos a donar', 'Prueba'];
-  marquee_default:string = 'Teletón 2022, ¡Juntos todo es Posible!';
-  interval:any;
+  messages: string[] = [];
+  refreshedSMS: string[] = [];
+  marquee_default: string = 'Teletón 2022, ¡Juntos todo es Posible!';
+  MARQUEE_SMS_COUNT: number = 50;
 
-  constructor() {
+  constructor(private apiService: RestApiService) {
     console.log("marquee constructor")
   }
 
+  ngAfterViewInit(): void {
+    setTimeout(() => {
+      console.log("Getting new messages");
+      this.loadMoreMessages();
+    }, 50000)
+  }
+
   ngOnInit(): void {
-    //this.loadMarquee()
-    //this.initMarqueeObserver();
-
+    this.loadInitialMessages();
   }
 
-  ngOnDestroy(){
-    clearInterval(this.interval);
-    console.log("marquee destroyed");
-  }
-
-  initMarqueeObserver() {
-    console.log("Init observable");
-    interval(1000).pipe(take(this.messages.length)).subscribe(i => {
-        console.log('obs:',this.messages[i])
-        if (i<1){
-          console.log("New data")
-          this.messages.push(`Data: ${i}`)
+  loadMoreMessages(): void {
+    if (this.refreshedSMS.length <= 10) {
+      this.apiService.getMessages().subscribe({
+        next: (response) => {
+          response.forEach((data) => {
+            this.refreshedSMS.push(data.sms);
+          });
+        },
+        complete: () => {
+          this.messages = [...this.refreshedSMS.splice(0, this.MARQUEE_SMS_COUNT)]
+          console.log("More messages fetched complete:",this.messages);
         }
-    });
-
-    // const source = Observable.interval(1000).take(this.messages.length);
-    // const sub = source.finally(this.messages).subscribe((i:number) => console.log(this.messages[i]));
+      });
+    } else {
+      this.messages = [...this.refreshedSMS.splice(0, this.MARQUEE_SMS_COUNT)]
+    }
   }
 
-
-  loadMarquee() {
-   this.interval = setInterval(() => {
-      console.log('Marquee loaded')
-     // this.messages.push("sdadasda")
-    }, 20000);
+  loadInitialMessages(): void {
+    this.apiService.getMessages().subscribe({
+      next: (response) => {
+        response.forEach((data) => {
+          this.refreshedSMS.push(data.sms);
+        });
+      },
+      complete: () => {
+        this.messages = [...this.refreshedSMS.splice(0, this.MARQUEE_SMS_COUNT)]
+        console.log("LoadInit Complete: ", this.messages);
+      },
+    })
   }
-
-
-
 
 
 

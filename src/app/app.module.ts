@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 /* Necesario para poder usar animations como en el fader */
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -36,6 +36,6 @@ import { ImagesCarouselComponent } from './components/images-carousel/images-car
     NgbModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule { }

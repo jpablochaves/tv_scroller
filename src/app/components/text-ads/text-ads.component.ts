@@ -15,7 +15,7 @@ export class TextAdsComponent implements OnInit {
   constructor(public restApi: RestApiService) { }
   ngOnInit(): void {
     // console.log("Init ** text-ads");
-   // this.loadData();
+    // this.loadData();
   }
 
   loadData() {
