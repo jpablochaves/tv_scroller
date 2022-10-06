@@ -4,7 +4,7 @@ marquee-advertising: Para sobreponer el texto en el div de bgMensajesComponent
 .advertising-bg {
   position: absolute;
   width: 940px;
-  margin-top: 91px;
+  margin-top: 89px;
   z-index: 5;
 }
 
